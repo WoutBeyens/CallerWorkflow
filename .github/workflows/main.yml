@@ -20,10 +20,11 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   buildDifferentAppPlatform:
-    runs-on: ubuntu-latest
     if: ${{ github.evetn.inputs.buildDifferentApp == 'Go' }}
     # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      - name: Perform workflow of Go
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: mslearn-aks-deployment-pipeline-github-actions/.github/workflows/deploytoAksCluster.yml@main
+    uses: mslearn-aks-deployment-pipeline-github-actions/.github/workflows/deploytoAksCluster.yml@main
+    with: 
+      username: WoutBeyens
+    secrets:
+      envPAT: ${{ secrets.envPAT }}
+        
